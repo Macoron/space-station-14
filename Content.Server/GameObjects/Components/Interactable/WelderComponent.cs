@@ -18,7 +18,7 @@ namespace Content.Server.GameObjects.Components.Interactable
 {
     [RegisterComponent]
     [ComponentReference(typeof(ToolComponent))]
-    public class WelderComponent : ToolComponent, IExamine, IUse
+    public class WelderComponent : ToolComponent, IExamine, IUse, ISolutionChange
     {
 #pragma warning disable 649
         [Dependency] private IEntitySystemManager _entitySystemManager;
@@ -182,7 +182,12 @@ namespace Content.Server.GameObjects.Components.Interactable
 
             if (Fuel == 0)
                 ToggleWelderStatus();
+        }
 
+        ///<inheritdoc/>
+        public void SolutionChanged(SolutionChangeEventArgs eventArgs)
+        {
+            // fuel amount in welder changed
             Dirty();
         }
     }
