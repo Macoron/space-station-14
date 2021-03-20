@@ -1,7 +1,7 @@
 # These should be lathe recipes but lathe code sucks so hard rn so they'll be crafted by hand.
 
 - type: construction
-  name: steel tile
+  name: steel tile [x4]
   id: tileSteel
   graph: tileSteel
   startNode: start
@@ -12,7 +12,7 @@
   objectType: Item
 
 - type: construction
-  name: wood floor
+  name: wood floor [x4]
   id: tileWood
   graph: tileWood
   startNode: start

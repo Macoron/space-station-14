@@ -1,5 +1,5 @@
-﻿- type: construction
-  name: Metal Rod
+- type: construction
+  name: Metal Rod [x2]
   id: metalRod
   graph: metalRod
   startNode: start
