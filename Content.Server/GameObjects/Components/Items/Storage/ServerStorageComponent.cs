@@ -147,7 +147,7 @@ namespace Content.Server.GameObjects.Components.Items.Storage
                 return;
             }
 
-            PlaySoundCollection(StorageSoundCollection);
+            PlayStorageSound();
             EnsureInitialCalculated();
 
             Logger.DebugS(LoggerName, $"Storage (UID {Owner.Uid}) had entity (UID {message.Entity.Uid}) inserted into it.");
@@ -243,7 +243,7 @@ namespace Content.Server.GameObjects.Components.Items.Storage
         /// <param name="entity">The entity to open the UI for</param>
         public void OpenStorageUI(IEntity entity)
         {
-            PlaySoundCollection(StorageSoundCollection);
+            PlayStorageSound();
             EnsureInitialCalculated();
 
             var userSession = entity.GetComponent<BasicActorComponent>().playerSession;
@@ -543,7 +543,7 @@ namespace Content.Server.GameObjects.Components.Items.Storage
                 // If we picked up atleast one thing, play a sound and do a cool animation!
                 if (successfullyInserted.Count>0)
                 {
-                    PlaySoundCollection(StorageSoundCollection);
+                    PlayStorageSound();
                     SendNetworkMessage(
                         new AnimateInsertingEntitiesMessage(
                             successfullyInserted,
@@ -614,14 +614,14 @@ namespace Content.Server.GameObjects.Components.Items.Storage
             }
         }
 
-        protected void PlaySoundCollection(string? name)
+        public void PlayStorageSound()
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(StorageSoundCollection))
             {
                 return;
             }
 
-            var file = AudioHelpers.GetRandomFileFromSoundCollection(name);
+            var file = AudioHelpers.GetRandomFileFromSoundCollection(StorageSoundCollection);
             SoundSystem.Play(Filter.Pvs(Owner), file, Owner, AudioParams.Default);
         }
     }

@@ -258,6 +258,9 @@
   id: TrashBag
   parent: BaseItem
   components:
+  - type: Tag
+    tags:
+    - TrashBag
   - type: Sprite
     sprite: Objects/Specific/Janitorial/trashbag.rsi
     state: icon
