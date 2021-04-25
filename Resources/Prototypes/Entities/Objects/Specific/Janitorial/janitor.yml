@@ -60,3 +60,42 @@
     state: caution
   - type: Item
     sprite: Objects/Specific/Janitorial/wet_floor_sign.rsi
+    
+- type: entity
+  name: janitorial cart
+  id: JanitorialCart
+  description: This is the alpha and omega of sanitation.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Janitorial/janitorial_cart.rsi
+    layers:
+    - state: cart
+      map: ["enum.JanitorialCartLayers.Base"]
+    - state: cart_garbage
+      map: ["enum.JanitorialCartLayers.TrashBag"]
+    - state: cart_mop
+      map: ["enum.JanitorialCartLayers.Mop"]
+    - state: cart_replacer
+      map: ["enum.JanitorialCartLayers.LightReplacer"]
+    - state: cart_sign4
+      map: ["enum.JanitorialCartLayers.Signs"]
+    - state: cart_spray
+      map: ["enum.JanitorialCartLayers.Spray"]
+    - state: cart_water
+      map: ["enum.JanitorialCartLayers.Liquid"]
+  - type: InteractionOutline
+  - type: Bucket
+  - type: Physics
+    bodyType: Dynamic
+    fixtures:
+    - shape:
+        !type:PhysShapeAabb
+          bounds: "-0.40,-0.25,0.25,0.25"
+      mass: 100
+      mask:
+      - Impassable
+      layer:
+      - Opaque
+  - type: Pullable
+  - type: Rotatable
+  - type: Clickable
